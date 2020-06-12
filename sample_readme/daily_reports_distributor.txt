@@ -1,0 +1,53 @@
+Environment Variable Readme
+
+Key: bucket_name
+Sample Value: connect-123456
+Description: The bucket name for Amazon Connect S3 bucket instance
+
+Key: cc_1
+Sample Value: email_1@someemail.com,email_2@someemail.com
+Description: List of cc emails with comma as delimiter; which recipients want to get report with key_1 in the filename
+
+Key: cc_default
+Sample Value: email_default@someemail.com,email_default_2@someemail.com
+Description: List of cc emails with comma as delimiter; recipients that will receive email if no report with key found
+
+Key: charset
+Sample Value: utf-8
+Description: what text encoding to use in the email
+
+Key: key_1
+Sample Value: Daily
+Description: the keyword to look for in the report filename; if you want to send out multiple reports, create key_2, key_3, etc environment variables and put keywords for those as well, would have to modify the code to include the new keys
+
+Key: path
+Sample Value: connect/connect-123456/Reports/DailyCalls/
+Description: the folder path (key prefix) to look for in S3 bucket
+
+Key: recipient_1
+Sample Value: email_1@someemail.com,email_2@someemail.com
+Description: List of To emails with comma as delimiter; which recipients want to get report with key_1 in the filename
+
+Key: recipient_default
+Sample Value: to_default@someemail.com,to_default_2@someemail.com
+Description: List of To emails with comma as delimiter; recipients that will receive email if no report with key found
+
+Key: region
+Sample Value: us-west-2
+Description: the AWS region for the Amazon Connect instance
+
+Key: reply_to
+Sample Value: tech.support@someemail.com 
+Description: The default reply address when someone wants to reply to the email
+
+Key: return_path
+Sample Value: return.to@someemail.com
+Description: The default return address if email gets bounced
+
+Key: sender
+Sample Value: sender@someemail.com
+Description: The From address of the email
+
+Key: subject
+Sample Value: Daily Report
+Description: The subject line of the email

@@ -1,0 +1,23 @@
+Key: channel_voice
+Sample Value: VOICE
+Description: voice channel filter for API call
+
+Key: connect_instance_id
+Sample Value: 123456-abcd-1234
+Description: The Amazon Connect ID (get from ARN)
+
+Key: grouping_queue
+Sample Value: QUEUE
+Description: The grouping for API call
+
+Key: namespace
+Sample Value: HistoricalMetrics
+Description: The CloudWatch custom namespace to push the data
+
+Key: queue_1, queue_2, queue_3
+Sample Value: abcde-1234-5235235
+Description: the queue ID (get from ARN)
+
+Key: queue_1_name, queue_2_name, queue_3_name
+Sample Value: My Queue
+Description: The human-readable name of the queue

@@ -26,6 +26,8 @@ def lambda_handler(event, context):
         
         # Only supported grouping as of 6/4/20 is QUEUE
         grouping_queue = os.environ['grouping_queue']
+        
+        namespace = os.environ['namespace']
     
     except:
         print("Environment variables not configured")
@@ -107,7 +109,7 @@ def lambda_handler(event, context):
         
         # Publish Metrics to CloudWatch Logs under the specified Namespace
         cloudwatch.put_metric_data(
-            Namespace='ConnectHistoricalMetrics_TEST',
+            Namespace=namespace,
             MetricData=[
                 {
                     'MetricName': 'Contacts Queued',

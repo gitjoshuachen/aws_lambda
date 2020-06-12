@@ -27,9 +27,9 @@ def lambda_handler(event, context):
         try:
             path = os.environ['path']
             aws_region = os.environ['region']
-            group_1 = os.environ['key_1']
             bucket_name = os.environ['bucket_name']
             charset = os.environ['charset']
+            namespace = os.environ['namespace']
 
         # One of more of the environment variables did not exist
         except:
@@ -58,7 +58,7 @@ def lambda_handler(event, context):
 
             # Load the file into memory so that we can attach it
             s3_record = s3_object['Body'].read()
-            s3_record_string = s3_record.decode('utf-8')
+            s3_record_string = s3_record.decode(charset)
             
             # Start CSV reading and parsing code
             s3_record_lines = s3_record_string.strip().split("\n")[2:]
@@ -80,7 +80,7 @@ def lambda_handler(event, context):
                 
                 # Send the data to cloudwatch
                 cloudwatch.put_metric_data(
-                    Namespace='ConnectHistoricalMetrics_TEST',
+                    Namespace=namespace,
                     MetricData=[
                         {
                             'MetricName': 'Agent Idle Time Per Team Lead',

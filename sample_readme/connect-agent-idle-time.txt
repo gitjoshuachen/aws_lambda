@@ -1,0 +1,19 @@
+Key: bucket_name
+Sample Value: connect-123456
+Description: The bucket name for Amazon Connect S3 bucket instance
+
+Key: path
+Sample Value: connect/connect-123456/Reports/AgentIdleTime/
+Description: The folder path (key prefix) to look for in S3 bucket
+
+Key: region
+Sample Value: us-west-2
+Description: The AWS region of Amazon Connect
+
+Key: charset
+Sample Value: utf-8
+Description: The text encoding to use for reading file from S3 bucket
+
+Key: namespace
+Sample Value: HistoricalMetrics
+Description: The CloudWatch custom namespace to push the data
