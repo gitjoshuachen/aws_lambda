@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-west-2",
+      "eventTime": "2018-05-01T15:15:00.000Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:someID:abcdef-1000-0000-0000-000"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "111.11.111.111"
+      },
+      "responseElements": {
+        "x-amz-request-id": "ABCDEFGHIJKLMN",
+        "x-amz-id-2": "aaaaaaaa/bbbbb/ccc"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "agent-idle-time-testEvent",
+        "bucket": {
+          "name": "connect-123456",
+          "ownerIdentity": {
+            "principalId": "AZZZZZZZ"
+          },
+          "arn": "arn:aws:s3:::connect-123456"
+        },
+        "object": {
+          "key": "connect/connect-123456/Reports/AgentIdleTime/AgentIdleTimePerTeamLeadTest.csv",
+          "size": 112,
+          "eTag": "12345",
+          "sequencer": "000000000"
+        }
+      }
+    }
+  ]
+}
