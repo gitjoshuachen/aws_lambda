@@ -133,32 +133,32 @@ def lambda_handler(event, context):
             name = item['Collections'][i]['Metric']['Name']
             value = item['Collections'][i]['Value']
         
-                if name == "CONTACTS_TRANSFERRED_IN":
-                    contacts_transferred_in = value
+            if name == "CONTACTS_TRANSFERRED_IN":
+                contacts_transferred_in = value
+            
+            elif name == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
+                contacts_transferred_in_from_queue = value
+            
+            elif name == "CONTACTS_TRANSFERRED_OUT":
+                contacts_transferred_out = value
                 
-                elif name == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                    contacts_transferred_in_from_queue = value
+            elif name == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
+                contacts_transferred_out_from_queue = value
+            
+            elif name == "CONTACTS_QUEUED":
+                contacts_queued = value
                 
-                elif name == "CONTACTS_TRANSFERRED_OUT":
-                    contacts_transferred_out = value
-                    
-                elif name == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                    contacts_transferred_out_from_queue = value
+            elif name == "CONTACTS_ABANDONED":
+                contacts_abandoned = value
                 
-                elif name == "CONTACTS_QUEUED":
-                    contacts_queued = value
-                    
-                elif name == "CONTACTS_ABANDONED":
-                    contacts_abandoned = value
-                    
-                elif name == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                    contacts_agent_hung_up = value
+            elif name == "CONTACTS_AGENT_HUNG_UP_FIRST":
+                contacts_agent_hung_up = value
+            
+            elif name == "CONTACTS_HOLD_ABANDONS":
+                contacts_hold_abandons = value
                 
-                elif name == "CONTACTS_HOLD_ABANDONS":
-                    contacts_hold_abandons = value
-                    
-                elif name == "CONTACTS_MISSED":
-                    contacts_missed = value
+            elif name == "CONTACTS_MISSED":
+                contacts_missed = value
             
         
         temp_id = item['Dimensions']['Queue']['Id']
