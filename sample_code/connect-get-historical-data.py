@@ -100,58 +100,22 @@ def lambda_handler(event, context):
         contacts_handled_outbound = 0
         contacts_handled_incoming = 0
         
-        if item['Collections'][0]['Metric']['Name'] == "CONTACTS_HANDLED":
-            contacts_handled = item['Collections'][0]['Value']
-        
-        elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_QUEUED":
-            contacts_queued = item['Collections'][0]['Value']
-        
-        elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_HANDLED_OUTBOUND":
-            contacts_handled_outbound = item['Collections'][0]['Value']
-        
-        elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_HANDLED_INCOMING":
-            contacts_handled_incoming = item['Collections'][0]['Value']
+        for i in range(len(item['Collections'])):
             
-        
-        if item['Collections'][1]['Metric']['Name'] == "CONTACTS_HANDLED":
-            contacts_handled = item['Collections'][1]['Value']
-        
-        elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_QUEUED":
-            contacts_queued = item['Collections'][1]['Value']
+            name = item['Collections'][i]['Metric']['Name']
+            value = item['Collections'][i]['Value']
             
-        elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_HANDLED_OUTBOUND":
-            contacts_handled_outbound = item['Collections'][1]['Value']
-        
-        elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_HANDLED_INCOMING":
-            contacts_handled_incoming = item['Collections'][1]['Value']
-        
-        
-        if item['Collections'][2]['Metric']['Name'] == "CONTACTS_HANDLED":
-            contacts_handled = item['Collections'][2]['Value']
-        
-        elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_QUEUED":
-            contacts_queued = item['Collections'][2]['Value']
+            if name == "CONTACTS_HANDLED":
+                contacts_handled = value
             
-        elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_HANDLED_OUTBOUND":
-            contacts_handled_outbound = item['Collections'][2]['Value']
-        
-        elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_HANDLED_INCOMING":
-            contacts_handled_incoming = item['Collections'][2]['Value']
-        
-        if len(item['Collections']) > 3:
-            if item['Collections'][3]['Metric']['Name'] == "CONTACTS_HANDLED":
-                contacts_handled = item['Collections'][3]['Value']
+            elif name == "CONTACTS_QUEUED":
+                contacts_queued = value
             
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][3]['Value']
-                
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_HANDLED_OUTBOUND":
-                contacts_handled_outbound = item['Collections'][3]['Value']
+            elif name == "CONTACTS_HANDLED_OUTBOUND":
+                contacts_handled_outbound = value
             
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_HANDLED_INCOMING":
-                contacts_handled_incoming = item['Collections'][3]['Value']
-        
-        
+            elif name == "CONTACTS_HANDLED_INCOMING":
+                contacts_handled_incoming = value
         
         # Publish Metrics to CloudWatch Logs under the specified Namespace
         cloudwatch.put_metric_data(

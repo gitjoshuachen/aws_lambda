@@ -128,260 +128,38 @@ def lambda_handler(event, context):
         contacts_hold_abandons = -1
         contacts_missed = -1
         
-        array_length = len(item['Collections'])
+        for i in range(len(item['Collections'])):
+            
+            name = item['Collections'][i]['Metric']['Name']
+            value = item['Collections'][i]['Value']
         
-        if array_length > 0:
-            if item['Collections'][0]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][0]['Value']
+                if name == "CONTACTS_TRANSFERRED_IN":
+                    contacts_transferred_in = value
+                
+                elif name == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
+                    contacts_transferred_in_from_queue = value
+                
+                elif name == "CONTACTS_TRANSFERRED_OUT":
+                    contacts_transferred_out = value
+                    
+                elif name == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
+                    contacts_transferred_out_from_queue = value
+                
+                elif name == "CONTACTS_QUEUED":
+                    contacts_queued = value
+                    
+                elif name == "CONTACTS_ABANDONED":
+                    contacts_abandoned = value
+                    
+                elif name == "CONTACTS_AGENT_HUNG_UP_FIRST":
+                    contacts_agent_hung_up = value
+                
+                elif name == "CONTACTS_HOLD_ABANDONS":
+                    contacts_hold_abandons = value
+                    
+                elif name == "CONTACTS_MISSED":
+                    contacts_missed = value
             
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][0]['Value']
-            
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][0]['Value']
-                
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][0]['Value']
-            
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][0]['Value']
-                
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][0]['Value']
-                
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][0]['Value']
-            
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][0]['Value']
-                
-            elif item['Collections'][0]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][0]['Value']
-        
-        if array_length > 1:
-            if item['Collections'][1]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][1]['Value']
-            
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][1]['Value']
-            
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][1]['Value']
-                
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][1]['Value']
-            
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][1]['Value']
-                
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][1]['Value']
-                
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][1]['Value']
-            
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][1]['Value']
-                
-            elif item['Collections'][1]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][1]['Value']
-        
-        if array_length > 2:    
-            if item['Collections'][2]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][2]['Value']
-            
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][2]['Value']
-            
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][2]['Value']
-                
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][2]['Value']
-            
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][2]['Value']
-                
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][2]['Value']
-                
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][2]['Value']
-            
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][2]['Value']
-                
-            elif item['Collections'][2]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][2]['Value']
-        
-        if array_length > 3:
-            if item['Collections'][3]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][3]['Value']
-            
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][3]['Value']
-            
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][3]['Value']
-                
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][3]['Value']
-                
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][3]['Value']
-                
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][3]['Value']
-                
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][3]['Value']
-            
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][3]['Value']
-                
-            elif item['Collections'][3]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][3]['Value']
-        
-        if array_length > 4:
-            if item['Collections'][4]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][4]['Value']
-            
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][4]['Value']
-            
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][4]['Value']
-                
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][4]['Value']
-                
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][4]['Value']
-                
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][4]['Value']
-                
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][4]['Value']
-            
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][4]['Value']
-                
-            elif item['Collections'][4]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][4]['Value']
-            
-        if array_length > 5:
-            if item['Collections'][5]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][5]['Value']
-            
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][5]['Value']
-            
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][5]['Value']
-                
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][5]['Value']
-                
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][5]['Value']
-                
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][5]['Value']
-                
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][5]['Value']
-            
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][5]['Value']
-                
-            elif item['Collections'][5]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][5]['Value']
-                
-        if array_length > 6:
-            if item['Collections'][6]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][6]['Value']
-            
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][6]['Value']
-            
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][6]['Value']
-                
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][6]['Value']
-                
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][6]['Value']
-                
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][6]['Value']
-                
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][6]['Value']
-            
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][6]['Value']
-                
-            elif item['Collections'][6]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][6]['Value']
-                
-        if array_length > 7:
-            if item['Collections'][7]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][7]['Value']
-            
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][7]['Value']
-            
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][7]['Value']
-                
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][7]['Value']
-                
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][7]['Value']
-                
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][7]['Value']
-                
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][7]['Value']
-            
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][7]['Value']
-                
-            elif item['Collections'][7]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][7]['Value']
-                
-        if array_length > 8:
-            if item['Collections'][8]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN":
-                contacts_transferred_in = item['Collections'][8]['Value']
-            
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_TRANSFERRED_IN_FROM_QUEUE":
-                contacts_transferred_in_from_queue = item['Collections'][8]['Value']
-            
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT":
-                contacts_transferred_out = item['Collections'][8]['Value']
-                
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_TRANSFERRED_OUT_FROM_QUEUE":
-                contacts_transferred_out_from_queue = item['Collections'][8]['Value']
-                
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_QUEUED":
-                contacts_queued = item['Collections'][8]['Value']
-                
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_ABANDONED":
-                contacts_abandoned = item['Collections'][8]['Value']
-                
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_AGENT_HUNG_UP_FIRST":
-                contacts_agent_hung_up = item['Collections'][8]['Value']
-            
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_HOLD_ABANDONS":
-                contacts_hold_abandons = item['Collections'][8]['Value']
-                
-            elif item['Collections'][8]['Metric']['Name'] == "CONTACTS_MISSED":
-                contacts_missed = item['Collections'][8]['Value']
-
         
         temp_id = item['Dimensions']['Queue']['Id']
         temp_arn = item['Dimensions']['Queue']['Arn']

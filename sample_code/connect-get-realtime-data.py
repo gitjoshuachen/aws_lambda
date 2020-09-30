@@ -84,17 +84,16 @@ def lambda_handler(event, context):
         agents_online = -1
         agents_on_call = -1
         
-        if item['Collections'][0]['Metric']['Name'] == "AGENTS_ONLINE":
-            agents_online = item['Collections'][0]['Value']
-        
-        elif item['Collections'][0]['Metric']['Name'] == "AGENTS_ON_CALL":
-            agents_on_call = item['Collections'][0]['Value']
+        for i in range(len(item['Collections'])):
             
-        if item['Collections'][1]['Metric']['Name'] == "AGENTS_ONLINE":
-            agents_online = item['Collections'][1]['Value']
+            name = item['Collections'][i]['Metric']['Name']
+            value = item['Collections'][i]['Value']
         
-        elif item['Collections'][1]['Metric']['Name'] == "AGENTS_ON_CALL":
-            agents_on_call = item['Collections'][1]['Value']
+            if name == "AGENTS_ONLINE":
+                agents_online = value
+            
+            elif name == "AGENTS_ON_CALL":
+                agents_on_call = value
         
         # Publish Metrics to CloudWatch Logs under the specified Namespace
         cloudwatch.put_metric_data(
